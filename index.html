@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script type="module" src="common.mjs"></script>
-    <script type="module" src="web.mjs"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+<main>
+    <h1 id="month-year"></h1>
+
+    <div class="calendar-controls">
+        <button id="previous-month">Previous month</button>
+        <button id="next-month">Next month</button>
+    </div>
+
+    <div class="date-picker">
+        <label for="month-select">Month</label>
+        <select id="month-select"></select>
+
+        <label for="year-select">Year</label>
+        <select id="year-select"></select>
+
+        <button id="go-to-date">Go</button>
+    </div>
+
+    <div class="calendar">
+        <div class="weekday">Sun</div>
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
+
+        <div id="calendar-days"></div>
+    </div>
+
+    <template id="day-template">
+        <div class="calendar-day">
+            <span class="day-number"></span>
+            <div class="commemorative-days"></div>
+        </div>
+    </template>
+</main>
+<script type="module" src="common.mjs"></script>
+<script type="module" src="web.mjs"></script>
 </body>
 </html>
