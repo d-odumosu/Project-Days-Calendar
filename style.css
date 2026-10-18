@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Navigation */
+
+.calendar-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+button,
+select {
+    font: inherit;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #eee;
+}
+
+/* Month/year selector */
+
+.date-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Calendar */
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.weekday {
+    padding: 0.75rem;
+    text-align: center;
+    font-weight: bold;
+    background-color: #eee;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#calendar-days {
+    display: contents;
+}
+
+.calendar-day {
+    min-height: 120px;
+    padding: 0.75rem;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+}
+
+.day-number {
+    font-weight: bold;
+}
+
+.commemorative-days {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+}
