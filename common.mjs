@@ -53,7 +53,7 @@ export function calculateCommemorativeDate(dateObj, year) {
     year,
     commemorativeDate.monthName,
   );
-  // handle 'last' occurrence
+  // handle 'last' occurrence , we check if the date we're looking for has been reached else we keep going back
   if (dateObj.occurrence === "last") {
     const date = new Date(year, commemorativeDate.monthName + 1, 0);
 
