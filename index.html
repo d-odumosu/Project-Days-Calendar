@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <title>Days Calendar</title>
 </head>
 
 <body>
@@ -17,25 +18,40 @@
 
     <div class="date-picker">
         <label for="month-select">Month</label>
-        <select id="month-select"></select>
+        <select id="month-select">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
 
-        <label for="year-select">Year</label>
-        <select id="year-select"></select>
+        <label for="year-input">Year</label>
+        <input id="year-input" type="number" min="1">
 
         <button id="go-to-date">Go</button>
     </div>
 
-    <div class="calendar">
-        <div class="weekday">Sun</div>
-        <div class="weekday">Mon</div>
-        <div class="weekday">Tue</div>
-        <div class="weekday">Wed</div>
-        <div class="weekday">Thu</div>
-        <div class="weekday">Fri</div>
-        <div class="weekday">Sat</div>
-
+    <section aria-label="calendar">
+        <div class="calendar">
+            <div class="weekday">Sun</div>
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+        </div>
         <div id="calendar-days"></div>
-    </div>
+
+    </section>
 
     <template id="day-template">
         <div class="calendar-day">
