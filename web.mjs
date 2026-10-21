@@ -25,7 +25,9 @@ function goToPreviousMonth(){}
 function goToNextMonth(){}
 function goToSelectedDate(){}
 
-
+previousMonthButton.addEventListener("click", goToPreviousMonth);
+nextMonthButton.addEventListener("click", goToNextMonth);
+goToDateButton.addEventListener("click", goToSelectedDate);
 
 function renderCalendar(year, month, datesObj) {
     calendarDays.innerHTML = ""
