@@ -1,11 +1,3 @@
-import daysData from "./days.json" with { type: "json" };
-import {
-    getFirstDayOfTheMonth,
-    getLastDayOfTheMonth,
-    getNumberOfDaysInTheMonth,
-    calculateCommemorativeDate
-} from "./common.mjs";
-
 const monthYear = document.querySelector("#month-year");
 
 const previousMonthButton = document.querySelector("#previous-month");
@@ -16,7 +8,7 @@ const yearInput = document.querySelector("#year-input");
 const goToDateButton = document.querySelector("#go-to-date");
 
 const calendarDays = document.querySelector("#calendar-days");
-const dayTemplate = document.querySelector("#day-template");
+const template = document.querySelector("#day-template");
 
 
 //Page setup
@@ -30,8 +22,21 @@ function goToSelectedDate(){}
 
 //Calendar creation
 function renderCalendar(){}
-function createCalendarDay(){}
-function createEmptyCalendarCell(){}
+
+function cloneCalendarCell() {
+    return template.content.cloneNode(true)
+}
+
+function createEmptyCalendarCell(){
+    return cloneCalendarCell()
+}
+
+function createCalendarDay(){
+    const day = cloneCalendarCell()
+    const dayNumber = day.querySelector(".day-number")
+    const commemorativeDay = day.querySelector(".commemorative-days")
+    return day
+}
 
 
 //Commemorative days
