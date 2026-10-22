@@ -30,11 +30,9 @@ const occurrences = {
 };
 
 export function getFirstDayOfTheMonth(year, month) {
-  // we will calculate how many empty cells comes before
   return new Date(year, month, 1).getDay();
 }
 export function getLastDayOfTheMonth(year, month) {
-  // we will calculate how many empty cells come after
   return new Date(year, month + 1, 0).getDay();
 }
 export function getNumberOfDaysInTheMonth(year, month) {
@@ -82,3 +80,4 @@ export function calculateCommemorativeDate(dateObj, year) {
 export function formatDate(date) {
   return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
 }
+
