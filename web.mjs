@@ -63,8 +63,7 @@ function goToNextMonth() {
     if (state.currentMonth === 11) {
         state.currentMonth = 0
         state.currentYear += 1
-    }
-    else{
+    } else {
         state.currentMonth += 1
     }
     renderCalendar(state.currentYear, state.currentMonth, datesObj)
@@ -73,7 +72,7 @@ function goToNextMonth() {
 function goToSelectedDate() {
     state.currentMonth = Number(monthSelect.value)
     state.currentYear = Number(yearInput.value)
-    renderCalendar( state.currentYear, state.currentMonth, datesObj)
+    renderCalendar(state.currentYear, state.currentMonth, datesObj)
 }
 
 
@@ -127,7 +126,7 @@ function displayCommemorativeDays(dateObj, year) {
     const commemorativeDay = calculateCommemorativeDate(dateObj, year)
     return {
         day: commemorativeDay.getDate(),
-        month:commemorativeDay.getMonth()
+        month: commemorativeDay.getMonth()
     }
 }
 
