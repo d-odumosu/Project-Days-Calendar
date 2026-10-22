@@ -1,4 +1,3 @@
-
 import {calculateCommemorativeDate, formatDate} from "./common.mjs";
 import daysData from "./days.json" with {type: "json"};
 import {writeFile} from "node:fs/promises";
