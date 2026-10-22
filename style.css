@@ -89,7 +89,8 @@ input:focus-visible {
 }
 
 #calendar-days {
-  display: contents; /* Allows the date cells to line up in the parent calendar grid */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .calendar-day {

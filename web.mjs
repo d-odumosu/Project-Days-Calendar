@@ -92,7 +92,7 @@ function renderCalendar(year, month, datesObj) {
 
         datesObj.forEach((dateObj) => {
             const commemorativeDay = displayCommemorativeDays(dateObj, year);
-            if (commemorativeDay === i) {
+            if (commemorativeDay.day === i && commemorativeDay.month === month) {
                 const commemorativeDayElement =
                     numberCell.querySelector(".commemorative-days");
 
@@ -125,7 +125,10 @@ function createCalendarDay(date) {
 
 function displayCommemorativeDays(dateObj, year) {
     const commemorativeDay = calculateCommemorativeDate(dateObj, year)
-    return commemorativeDay.getDate()
+    return {
+        day: commemorativeDay.getDate(),
+        month:commemorativeDay.getMonth()
+    }
 }
 
 previousMonthButton.addEventListener("click", goToPreviousMonth);
