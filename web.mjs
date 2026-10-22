@@ -12,9 +12,9 @@ const previousMonthButton = document.querySelector("#previous-month");
 const nextMonthButton = document.querySelector("#next-month");
 const monthSelect = document.querySelector("#month-select");
 const yearInput = document.querySelector("#year-input");
-const goToDateButton = document.querySelector("#go-to-date");
 const calendarDays = document.querySelector("#calendar-days");
 const template = document.querySelector("#day-template");
+const dateForm = document.querySelector("#date-form");
 
 const state = {
     currentYear: "",
@@ -44,7 +44,7 @@ function updateMonthYear() {
 }
 
 /**
- * Initialises the calendar using the current month and year.
+ * Initializes the calendar using the current month and year.
  */
 function initialiseCalendar() {
     const today = new Date();
@@ -93,6 +93,20 @@ function goToSelectedDate() {
     renderCalendar(state.currentYear, state.currentMonth, datesObj)
 }
 
+/**
+
+ Handles submission of the date form.
+
+
+
+ Prevents the page from reloading and updates the calendar
+
+ to the selected month and year.
+ */
+dateForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    goToSelectedDate();
+});
 /**
  * Renders the calendar for the specified month and year.
  *
@@ -182,6 +196,5 @@ function displayCommemorativeDays(dateObj, year) {
 
 previousMonthButton.addEventListener("click", goToPreviousMonth);
 nextMonthButton.addEventListener("click", goToNextMonth);
-goToDateButton.addEventListener("click", goToSelectedDate);
 
 window.onload = initialiseCalendar;

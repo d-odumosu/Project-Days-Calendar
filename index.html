@@ -16,7 +16,7 @@
         <button id="next-month">Next month</button>
     </div>
 
-    <div class="date-picker">
+    <form id="date-form" class="date-picker">
         <label for="month-select">Month</label>
         <select id="month-select">
             <option value="0">January</option>
@@ -36,8 +36,8 @@
         <label for="year-input">Year</label>
         <input id="year-input" type="number" min="1">
 
-        <button id="go-to-date">Go</button>
-    </div>
+        <button id="go-to-date" type="submit">Go</button>
+    </form>
 
     <section aria-label="calendar">
         <div class="calendar">
