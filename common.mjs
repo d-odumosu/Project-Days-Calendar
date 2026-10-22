@@ -29,16 +29,48 @@ const occurrences = {
   fifth: 5,
 };
 
+/**
+ * Gets the weekday number of the first day of a month.
+ *
+ * @param {number} year - The year of the month.
+ * @param {number} month - The month number, where January is 0.
+ * @returns {number} The weekday number, where Sunday is 0 and Saturday is 6.
+ */
 export function getFirstDayOfTheMonth(year, month) {
   return new Date(year, month, 1).getDay();
 }
+/**
+ * Gets the weekday number of the last day of a month.
+ *
+ * @param {number} year - The year of the month.
+ * @param {number} month - The month number, where January is 0.
+ * @returns {number} The weekday number, where Sunday is 0 and Saturday is 6.
+ */
 export function getLastDayOfTheMonth(year, month) {
   return new Date(year, month + 1, 0).getDay();
 }
+/**
+ * Gets the number of days in a month.
+ *
+ * @param {number} year - The year of the month.
+ * @param {number} month - The month number, where January is 0.
+ * @returns {number} The number of days in the month.
+ */
 export function getNumberOfDaysInTheMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
 }
 
+/**
+ * Calculates the date of a commemorative day for a given year.
+ *
+ * The commemorative day is determined by its month, weekday,
+ * and occurrence within the month. The function also handles
+ * commemorative days that occur on the last specified weekday.
+ *
+ * @param {object} dateObj - The commemorative day data.
+ * @param {number} year - The year to calculate the date for.
+ * @returns {Date} The calculated commemorative date.
+ */
 export function calculateCommemorativeDate(dateObj, year) {
   const commemorativeDate = {
     name: dateObj.name,
@@ -51,7 +83,8 @@ export function calculateCommemorativeDate(dateObj, year) {
     year,
     commemorativeDate.monthName,
   );
-  // handle 'last' occurrence , we check if the date we're looking for has been reached else we keep going back
+// Handle "last" occurrence by starting from the last day of the month
+  // and moving backwards until the correct weekday is found.
   if (dateObj.occurrence === "last") {
     const date = new Date(year, commemorativeDate.monthName + 1, 0);
 
@@ -78,6 +111,14 @@ export function calculateCommemorativeDate(dateObj, year) {
   }
 }
 
+/**
+ * Formats a Date object as YYYYMMDD.
+ *
+ * This format is used for the dates in the iCalendar file.
+ *
+ * @param {Date} date - The date to format.
+ * @returns {string} The formatted date.
+ */
 export function formatDate(date) {
   return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
 }
