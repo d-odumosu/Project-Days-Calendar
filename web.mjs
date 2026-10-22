@@ -5,7 +5,7 @@ import {
     getNumberOfDaysInTheMonth,
 
 } from "./common.mjs";
-import datesObj from "./days.json" with { type: "json" };
+import datesObj from "./days.json" with {type: "json"};
 
 const monthYear = document.querySelector("#month-year");
 const previousMonthButton = document.querySelector("#previous-month");
@@ -16,11 +16,28 @@ const goToDateButton = document.querySelector("#go-to-date");
 const calendarDays = document.querySelector("#calendar-days");
 const template = document.querySelector("#day-template");
 
-
-//Page setup
 const state = {
     currentYear: "",
     currentMonth: ""
+}
+const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
+function updateMonthYear() {
+    monthYear.textContent =
+        `${monthNames[state.currentMonth]} ${state.currentYear}`;
 }
 
 function initialiseCalendar() {
@@ -31,14 +48,34 @@ function initialiseCalendar() {
     renderCalendar(state.currentYear, state.currentMonth, datesObj)
 }
 
-//Navigation
-function goToPreviousMonth(){}
-function goToNextMonth(){}
-function goToSelectedDate(){}
 
-previousMonthButton.addEventListener("click", goToPreviousMonth);
-nextMonthButton.addEventListener("click", goToNextMonth);
-goToDateButton.addEventListener("click", goToSelectedDate);
+function goToPreviousMonth() {
+    if (state.currentMonth === 0) {
+        state.currentMonth = 11
+        state.currentYear -= 1
+    } else {
+        state.currentMonth -= 1
+    }
+    renderCalendar(state.currentYear, state.currentMonth, datesObj)
+}
+
+function goToNextMonth() {
+    if (state.currentMonth === 11) {
+        state.currentMonth = 0
+        state.currentYear += 1
+    }
+    else{
+        state.currentMonth += 1
+    }
+    renderCalendar(state.currentYear, state.currentMonth, datesObj)
+}
+
+function goToSelectedDate() {
+    state.currentMonth = Number(monthSelect.value)
+    state.currentYear = Number(yearInput.value)
+    renderCalendar( state.currentYear, state.currentMonth, datesObj)
+}
+
 
 function renderCalendar(year, month, datesObj) {
     calendarDays.innerHTML = ""
@@ -46,11 +83,11 @@ function renderCalendar(year, month, datesObj) {
     const lastWeekDayOfTheMonth = getLastDayOfTheMonth(year, month)
     const numberOfDaysInTheMonth = getNumberOfDaysInTheMonth(year, month)
 
-    for(let i = 0; i < firstDayOfTheMonth; i++){
+    for (let i = 0; i < firstDayOfTheMonth; i++) {
         const emptyCell = createEmptyCalendarCell()
         calendarDays.appendChild(emptyCell)
     }
-    for(let i = 1; i <= numberOfDaysInTheMonth; i++){
+    for (let i = 1; i <= numberOfDaysInTheMonth; i++) {
         const numberCell = createCalendarDay(i)
 
         datesObj.forEach((dateObj) => {
@@ -64,33 +101,35 @@ function renderCalendar(year, month, datesObj) {
         });
         calendarDays.appendChild(numberCell)
     }
-    for(let i = lastWeekDayOfTheMonth + 1; i <= 6; i++){
+    for (let i = lastWeekDayOfTheMonth + 1; i <= 6; i++) {
         const emptyCell = createEmptyCalendarCell()
         calendarDays.appendChild(emptyCell)
     }
+    updateMonthYear()
 }
 
 function cloneCalendarCell() {
     return template.content.cloneNode(true)
 }
 
-function createEmptyCalendarCell(){
+function createEmptyCalendarCell() {
     return cloneCalendarCell()
 }
 
-function createCalendarDay(date){
+function createCalendarDay(date) {
     const day = cloneCalendarCell()
     const dayNumberElement = day.querySelector(".day-number")
     dayNumberElement.textContent = date
     return day
 }
 
-function displayCommemorativeDays(dateObj, year){
+function displayCommemorativeDays(dateObj, year) {
     const commemorativeDay = calculateCommemorativeDate(dateObj, year)
     return commemorativeDay.getDate()
 }
 
-
-
+previousMonthButton.addEventListener("click", goToPreviousMonth);
+nextMonthButton.addEventListener("click", goToNextMonth);
+goToDateButton.addEventListener("click", goToSelectedDate);
 
 window.onload = initialiseCalendar;
