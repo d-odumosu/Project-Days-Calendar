@@ -75,7 +75,8 @@ button:hover {
 }
 
 #calendar-days {
-    display: contents;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .calendar-day {

@@ -5,7 +5,7 @@ import {
     getNumberOfDaysInTheMonth,
 
 } from "./common.mjs";
-import days from "./days.json" with { type: "json" };
+import datesObj from "./days.json" with { type: "json" };
 
 const monthYear = document.querySelector("#month-year");
 const previousMonthButton = document.querySelector("#previous-month");
@@ -18,7 +18,18 @@ const template = document.querySelector("#day-template");
 
 
 //Page setup
-function initialiseCalendar() {}
+const state = {
+    currentYear: "",
+    currentMonth: ""
+}
+
+function initialiseCalendar() {
+    const today = new Date();
+
+    state.currentYear = today.getFullYear();
+    state.currentMonth = today.getMonth();
+    renderCalendar(state.currentYear, state.currentMonth, datesObj)
+}
 
 //Navigation
 function goToPreviousMonth(){}
