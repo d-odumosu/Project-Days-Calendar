@@ -73,7 +73,6 @@ export function getNumberOfDaysInTheMonth(year, month) {
  */
 export function calculateCommemorativeDate(dateObj, year) {
   const commemorativeDate = {
-    name: dateObj.name,
     monthName: months[dateObj.monthName],
     dayName: weekDays[dateObj.dayName],
     occurrence: occurrences[dateObj.occurrence],
